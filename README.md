@@ -98,16 +98,17 @@ The menu includes 32 distinct items across four categories: American, Asian, Ita
 **Popular Menu Items and Categories:**
 - Most Ordered Item: Hamburger (622 orders).
 - Least Ordered Item: Chicken Tacos (123 orders).
-
-**American Cuisine:**
-- Top Items: Hamburger (622), Cheeseburger (583), French Fries (571).
-- Average Price: $10.68.
-- Summary: High sales for affordable items indicate a strong preference for American cuisine.
+- Most Ordered Category: Asian and Italian
 
 **Asian Cuisine:**
 - Top Items: Edamame (620), Korean Beef Bowl (588), Tofu Pad Thai (562).
 - Average Price: $14.48.
 - Summary: The most popular category, with a broad appeal due to variety and pricing.
+  
+**American Cuisine:**
+- Top Items: Hamburger (622), Cheeseburger (583), French Fries (571).
+- Average Price: $10.68.
+- Summary: High sales for affordable items indicate a strong preference for American cuisine.
 
 **Italian Cuisine:**
 - Top Items: Spaghetti & Meatballs (470), Eggplant Parmesan (420), Spaghetti (367).
@@ -129,8 +130,20 @@ The menu includes 32 distinct items across four categories: American, Asian, Ita
 - High-spending orders typically include a mix of Italian and Asian dishes, showing a preference for premium categories.
 
 **Peak Order Times and Days:**
-- Busiest Days: Monday (2010 orders), Friday (1822 orders), Tuesday (1788 orders).
-- Least Busy Days: Wednesday (1531 orders), Saturday (1618 orders).
+
+**Busiest Days:**
+- Monday: 2010 orders
+- Friday: 1822 orders
+- Tuesday: 1788 orders
+  
+**Least Busy Days:**
+- Wednesday: 1531 orders
+- Saturday: 1618 orders
+
+**Peak Order Times:**
+The highest order volumes occur during the following hours:
+- Midday: 12:00 PM to 2:00 PM
+- Evening: 4:00 PM to 7:00 PM
 
 ### Recommendations
 
