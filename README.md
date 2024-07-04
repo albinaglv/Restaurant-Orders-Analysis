@@ -174,3 +174,15 @@ The highest order volumes occur during the following hours:
 
 The analysis is based on data spanning three months from January to March, which may not capture seasonal variations or long-term trends in customer behavior and menu popularity.
 
+**Lack of Real-World Variability:**
+
+ The dataset used for this project is fictional and may not capture the full complexity and unpredictability of actual restaurant operations. This can limit the applicability of the findings to real-world scenarios.
+
+**Lack of Direct Feedback:**
+ 
+The analysis does not incorporate direct customer feedback or satisfaction metrics, which are crucial for understanding the qualitative aspects of menu performance and customer experience.
+
+**Lack of Detailed Customer Data:**
+
+ The dataset does not provide detailed customer demographics, such as age, gender, or income level, which could offer deeper insights into customer preferences and behavior.
+
