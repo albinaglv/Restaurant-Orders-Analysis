@@ -1,4 +1,3 @@
-
 -- OBJECTIVE 1. Menu Analysis: Examine the menu items to understand the restaurant's offerings and pricing structure  
 
 -- Step 1. Explore the menu_items table 
