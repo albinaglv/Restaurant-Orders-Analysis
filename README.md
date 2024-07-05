@@ -10,6 +10,7 @@
 - [Summary of Key Findings](#summary-of-key-findings)
 - [Recommendations](#recommendations)
 - [Limitations](#limitations)
+- [Links](#links)
 
 ### 📁 Project Overview
 Welcome to the **Taste of the World Café** analysis project! This project involves a comprehensive SQL analysis of restaurant orders from January 1, 2023, to March 31, 2023, using a fictional dataset. The aim is to uncover insights into menu performance and customer preferences following the introduction of a new menu at the beginning of the year. 
@@ -43,8 +44,10 @@ Applied SQL aggregations, joins, subqueies and filters to analyse:
 - **MySQL**: The primary database management system used for querying and data analysis.
 
 ### 🎯 Objectives
-The primary objectives of this project are:
 
+In a competitive restaurant industry, understanding customer preferences and menu performance is crucial for maintaining profitability and customer satisfaction. This project aims to provide actionable insights that can help restaurant owners optimize their menu offerings, improve operational efficiency, and ultimately enhance customer experiences.
+
+The primary objectives of this project are:
 1. **Menu Performance Evaluation**: Assess the popularity and profitability of new menu items.
    
 2. **Order Trends Analysis**: Identify purchasing patterns, peak order times, and the distribution of orders across different menu categories to assess the impact of the new menu on customer behaviour.
@@ -259,3 +262,6 @@ The analysis does not incorporate direct customer feedback or satisfaction metri
 
  The dataset does not provide detailed customer demographics, such as age, gender, or income level, which could offer deeper insights into customer preferences and behavior.
 
+### 🔗 Links
+- [Dataset](https://mavenanalytics.io/data-playground?page=4&pageSize=5)
+- [SQL Scripts]()
