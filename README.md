@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Dataset](#dataset)
+- [Methodology](#methodology)
 - [Tools Used](#tools-used)
 - [Objectives](#objectives)
 - [SQL Queries](#sql-queries)
@@ -11,72 +12,103 @@
 - [Limitations](#limitations)
 
 ### 📁 Project Overview
-Welcome to the **Taste of the World Café** analysis project! This project involves a comprehensive SQL analysis of restaurant orders from January 1, 2023, to March 31, 2023, using a fictional dataset. The aim is to uncover insights into menu performance and customer preferences following the introduction of a new menu at the beginning of the year. The Taste of the World Café offers a diverse selection of Asian, American, Mexican, and Italian cuisines, providing a unique dining experience that captures flavors from around the world.
+Welcome to the **Taste of the World Café** analysis project! This project involves a comprehensive SQL analysis of restaurant orders from January 1, 2023, to March 31, 2023, using a fictional dataset. The aim is to uncover insights into menu performance and customer preferences following the introduction of a new menu at the beginning of the year. 
 
 ### 📊 Dataset
 The dataset used in this project is sourced from [Maven Analytics: Data Playground](https://mavenanalytics.io/data-playground?page=4&pageSize=5). It includes data on menu items, their prices and order information. 
 The data is available in CSV format and consists of two files: 
-- **menu_items.csv**: This file contains the following columns: `menu_item_id`, `item_name`, `category`, `price.
+- **menu_items.csv**: This file contains the following columns: `menu_item_id`, `item_name`, `category`, `price`.
 - **order_details.csv**: This file includes columns such as `order_details_id`, `order_id`, `order_date`, `order_time`, `item_id`.
 
-### Tools Used
+### 🔍 Methodology
+
+- **Data Extraction**:
+Utilized SQL queries to extract data from menu_items.csv and order_details.csv.
+
+- **Data Transformation**:
+Transformed raw data using SQL to derive insights on menu performance, order trends, and customer preferences.
+
+- **Data Analysis**:
+Applied SQL aggregations, joins, subqueies and filters to analyse:
+	- Menu item popularity and profitability
+	- Order volumes and peak times
+	- Customer spending trends and category preferences.
+
+- **Assumptions**:
+	- Data integrity and consistency assumed for the provided dataset.
+	- Pricing strategies assumed to be consistent throughout the analysis period.
+
+### 🛠️ Tools Used
 
 - **MySQL**: The primary database management system used for querying and data analysis.
 
 ### 🎯 Objectives
 The primary objectives of this project are:
 
-1. **Menu Analysis**: Evaluate menu items and pricing structures to determine the most and least popular dishes.
-2. **Order Analysis**: Identify purchasing patterns, peak order times, and the distribution of orders across different menu categories.
-3. **Customer Behavior Analysis**: Analyse customer preferences, high-spending orders, and trends to inform business decisions.
+1. **Menu Performance Evaluation**: Assess the popularity and profitability of new menu items.
+   
+2. **Order Trends Analysis**: Identify purchasing patterns, peak order times, and the distribution of orders across different menu categories to assess the impact of the new menu on customer behaviour.
+   
+3. **Customer Preference Insights**: Analyse customer preferences and spending trends to understand the reception of the new menu items.
 
-### SQL Queries
+### 💻 SQL Queries
+Here are the key SQL queries used for analysing the restaurant orders dataset:
 
-**Example:** Join `order_details` and `menu_items` tables
-
-**Techniques Used:** `LEFT JOIN`
+**Query 1: Menu Performance Evaluation**
 ```sql
-SELECT * FROM order_details AS od
-LEFT JOIN menu_items AS mi
-ON od.item_id = mi.menu_item_id;
-```
-**Explanation:** The LEFT JOIN ensures all records from `order_details` are retained.
- Combining these tables is essential for obtaining a comprehensive view of all orders and their related menu items.
- 
-
-
-**Example:** Identify the least and most expensive dishes in the Italian category. 
-
-**Techniques Used:** CTE, Window function (`DENSE_RANK`)
-```sql
- WITH ItalianRankedItems AS (
-    SELECT 
-        item_name,
-        price,
-        DENSE_RANK() OVER (ORDER BY price) AS price_rank_asc, 
-        DENSE_RANK() OVER (ORDER BY price DESC) AS price_rank_desc
-    FROM 
-        menu_items
-    WHERE 
-        category = 'Italian'
-)
+-- Count the number of unique menu items and calculate the average price per category
 SELECT 
-    item_name,
-    price
+    category,
+    COUNT(DISTINCT menu_item_id) AS num_items,  -- Number of unique menu items
+    ROUND(AVG(price), 2) AS avg_price  -- Average price rounded to two decimal places
 FROM 
-    ItalianRankedItems
-WHERE 
-    price_rank_asc = 1 OR price_rank_desc = 1; 
+    menu_items
+GROUP BY 
+    category 
+ORDER BY 
+    avg_price ASC;  -- Sort categories by average price in ascending order
 ```
-**Explanation**: This query identifies the least and most expensive dishes within the Italian cuisine category using a CTE (`ItalianRankedItems`) to rank menu items by price with `DENSE_RANK()`. By separating the ranking logic into a CTE, the main query focuses solely on selecting items with the lowest and highest ranks (`price_rank_asc = 1` or `price_rank_desc = 1`). This approach ensures clarity, maintains code modularity, and leverages `DENSE_RANK()` to accurately handle ties in pricing, providing valuable insights into pricing dynamics specific to Italian dishes.
+**Purpose:**
+This query analyses the variety and pricing distribution across menu categories. It provides insights into average pricing and menu composition, supporting decisions on pricing strategies, promotions, and overall menu performance to optimise customer satisfaction.
 
-
-
-**Example:** Counting orders with more Than 12 items
-
-**Techniques Used:** Subquery
-
+**Query 2: Menu Performance Evaluation**
 ```sql
+-- Calculate the revenue for each menu category
+SELECT 
+    category,
+    SUM(price) AS total_sales  -- Calculate total sales revenue
+FROM 
+    order_details 
+INNER JOIN 
+    menu_items ON order_details.item_id = menu_items.menu_item_id
+GROUP BY 
+    category
+ORDER BY 
+    total_sales DESC;  -- Order categories by total sales revenue in descending order
+```
+**Purpose**: 
+This query analyses the sales revenue generated by each menu category. It offers insights into the financial performance of menu categories, identifying top revenue contributors. 
+
+**Query 3: Order Trends Analysis** 
+```sql
+-- Identify the order volumes for each hour of the day to determine peak and off-peak times.
+SELECT 
+    DATE_FORMAT(order_time, '%H:00') AS order_hour,  -- Format the order time to hour intervals
+    COUNT(*) AS num_orders 
+FROM 
+    order_details
+GROUP BY 
+    DATE_FORMAT(order_time, '%H:00')  -- Group the results by hour intervals
+ORDER BY 
+    num_orders DESC;  -- Order the results by the number of orders in descending order
+```
+**Purpose**: 
+The query aims to identify the order volumes for each hour of the day, which helps in determining peak and off-peak times of customer activity
+
+**Query 4: Order Trends Analysis**
+```sql
+-- Number of orders with more than 12 items 
+-- The threshold of 12 items is arbitrary and can be adjusted as needed.
 SELECT COUNT(*) AS orders_with_more_than_12_items
 FROM (
 	SELECT 
@@ -85,11 +117,52 @@ FROM (
 	FROM order_details
 	GROUP BY order_id
     HAVING COUNT(item_id) > 12
-) AS number_of_orders
+) AS number_of_orders;
 ```
-**Explanation**: This query calculates the number of orders that contain more than 12 items. It uses a subquery to first group the `order_details` by `order_id` and counts the total number of items for each order. The `HAVING` clause filters out orders with 12 or fewer items, and only those with more than 12 items are considered. The outer query then counts these filtered orders, giving the total number of orders with more than 12 items. This analysis helps in identifying larger orders, which could be useful for understanding customer purchasing behavior or optimizing inventory management.
+**Purpose**
+This query helps in understanding the frequency of larger orders within the dataset, which can be valuable for operational planning, inventory management, and identifying patterns in customer purchasing behaviour.
 
-### Summary of Key Findings
+**Query 5: Customer Insights**
+```sql
+-- Identify the most popular menu categories based on the total number of items ordered.
+SELECT 
+    mi.category,
+    COUNT(od.order_details_id) AS num_items_ordered
+FROM 
+    order_details od
+INNER JOIN 
+    menu_items mi ON od.item_id = mi.menu_item_id
+WHERE 
+    mi.category IS NOT NULL  -- Exclude null categories
+GROUP BY 
+    mi.category
+ORDER BY 
+    num_items_ordered DESC;
+```
+**Purpose**: 
+This query provides insights into the popularity of menu items by counting the number of orders for each item across different menu categories. It helps identify both the most popular and least popular items, which is crucial for understanding customer preferences and optimising menu offerings to enhance customer satisfaction and profitability.
+
+**Query 6: Customer Insights**
+```sql
+-- Count the total number of orders per category from high-spending orders
+SELECT 
+    category,
+    COUNT(item_id) AS number_of_orders
+FROM 
+    order_details
+LEFT JOIN 
+    menu_items ON order_details.item_id = menu_items.menu_item_id
+WHERE 
+    order_id IN (440, 2075, 1957, 330, 2675)
+GROUP BY 
+    category
+ORDER BY 
+    number_of_orders DESC;
+```
+**Purpose**:
+The purpose of this query is to identify the popularity of different menu categories among high-spending customers. This analysis is crucial for identifying revenue-driving categories, allowing restaurants to prioritise and refine their offerings to enhance profitability and meet customer preferences effectively.
+
+### 🌟 Summary of Key Findings
 
 **Menu Variability:** 
 
@@ -145,7 +218,7 @@ The highest order volumes occur during the following hours:
 - Midday: 12:00 PM to 2:00 PM
 - Evening: 4:00 PM to 7:00 PM
 
-### Recommendations
+### 💡 Recommendations
 
 **Promote High-Performing Categories:**
 
@@ -168,15 +241,15 @@ The highest order volumes occur during the following hours:
 
 - Align staffing and inventory with peak order times to ensure efficient service and customer satisfaction.
 
-### Limitations
+### 🚧 Limitations
 
 **Limited Timeframe:**
 
-The analysis is based on data spanning three months from January to March, which may not capture seasonal variations or long-term trends in customer behavior and menu popularity.
+The analysis is based on data spanning three months from January to March 2023. This timeframe allows for a detailed examination of menu performance and customer preferences shortly after the introduction of a new menu. However, it may not capture seasonal variations or long-term trends in customer behavior and menu popularity. The absence of historical data before the new menu's introduction makes it challenging to compare menu performance over time and assess the sustained impact of the changes.
 
 **Lack of Real-World Variability:**
 
- The dataset used for this project is fictional and may not capture the full complexity and unpredictability of actual restaurant operations. This can limit the applicability of the findings to real-world scenarios.
+The analysis relies on a fictional dataset sourced from [Maven Analytics: Data Playground](https://mavenanalytics.io/data-playground?page=4&pageSize=5), which may not fully reflect the complexities and nuances of real-world restaurant operations. Certain variables or factors influencing customer behavior, such as external economic conditions or local events, are not captured in the dataset, potentially limiting the depth of insights that can be derived.
 
 **Lack of Direct Feedback:**
  
