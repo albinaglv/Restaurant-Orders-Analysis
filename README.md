@@ -30,7 +30,7 @@ Utilized SQL queries to extract data from menu_items.csv and order_details.csv.
 Transformed raw data using SQL to derive insights on menu performance, order trends, and customer preferences.
 
 - **Data Analysis**:
-Applied SQL aggregations, joins, subqueies and filters to analyse:
+Applied SQL aggregations, joins, subqueies, window function, CTE and filters to analyse:
 	- Menu item popularity and profitability
 	- Order volumes and peak times
 	- Customer spending trends and category preferences.
