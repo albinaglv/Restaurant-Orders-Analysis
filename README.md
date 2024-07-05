@@ -127,26 +127,6 @@ This query helps in understanding the frequency of larger orders within the data
 
 **Query 5: Customer Insights**
 ```sql
--- Identify the most popular menu categories based on the total number of items ordered.
-SELECT 
-    mi.category,
-    COUNT(od.order_details_id) AS num_items_ordered
-FROM 
-    order_details od
-INNER JOIN 
-    menu_items mi ON od.item_id = mi.menu_item_id
-WHERE 
-    mi.category IS NOT NULL  -- Exclude null categories
-GROUP BY 
-    mi.category
-ORDER BY 
-    num_items_ordered DESC;
-```
-**Purpose**: 
-This query provides insights into the popularity of menu items by counting the number of orders for each item across different menu categories. It helps identify both the most popular and least popular items, which is crucial for understanding customer preferences and optimising menu offerings to enhance customer satisfaction and profitability.
-
-**Query 6: Customer Insights**
-```sql
 -- Count the total number of orders per category from high-spending orders
 SELECT 
     category,
