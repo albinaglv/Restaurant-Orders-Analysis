@@ -12,7 +12,7 @@ The data is available in CSV format and consists of two files:
 ### 🔍 Methodology
 
 - **Data Extraction**:
-Utilized SQL queries to extract data from menu_items.csv and order_details.csv.
+Utilized SQL queries to extract data from menu_items and order_details.
 
 - **Data Transformation**:
 Transformed raw data using SQL to derive insights on menu performance, order trends, and customer preferences.
