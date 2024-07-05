@@ -1,4 +1,4 @@
-# Restaurant Orders Analysis
+# 🍽️ Restaurant Orders Analysis 
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -10,25 +10,25 @@
 - [Recommendations](#recommendations)
 - [Limitations](#limitations)
 
+### 📁 Project Overview
+Welcome to the **Taste of the World Café** analysis project! This project involves a comprehensive SQL analysis of restaurant orders from January 1, 2023, to March 31, 2023, using a fictional dataset. The aim is to uncover insights into menu performance and customer preferences following the introduction of a new menu at the beginning of the year. The Taste of the World Café offers a diverse selection of Asian, American, Mexican, and Italian cuisines, providing a unique dining experience that captures flavors from around the world.
 
-### Project Overview
-Welcome to the Taste of the World Café analysis project! This project involves a detailed exploration of the café's operations using a fictional dataset provided by [Maven Analytics: Data Playground](https://mavenanalytics.io/data-playground?page=4&pageSize=5). The objective is to gain actionable insights into menu performance and customer preferences following the introduction of a new menu at the beginning of the year.
-
-### Dataset
-The data used for this analysis consists of two files:
-
-- menu_items.csv: Provides details about the menu items, including their names, categories, and prices.
-- order_details.csv: Contains customer order information, capturing the date, time, and specifics of each order.
+### 📊 Dataset
+The dataset used in this project is sourced from [Maven Analytics: Data Playground](https://mavenanalytics.io/data-playground?page=4&pageSize=5). It includes data on menu items, their prices and order information. 
+The data is available in CSV format and consists of two files: 
+- **menu_items.csv**: This file contains the following columns: `menu_item_id`, `item_name`, `category`, `price.
+- **order_details.csv**: This file includes columns such as `order_details_id`, `order_id`, `order_date`, `order_time`, `item_id`.
 
 ### Tools Used
 
-- MySQL: The primary database management system used for querying and data analysis.
+- **MySQL**: The primary database management system used for querying and data analysis.
 
-### Objectives
+### 🎯 Objectives
+The primary objectives of this project are:
 
-- Menu Analysis: Examine menu items and pricing structure.
-- Order Analysis: Analyse order details to identify purchasing patterns.
-- Customer Behaviour Analysis: Uncover popular items, high-spending orders, and customer trends.
+1. **Menu Analysis**: Evaluate menu items and pricing structures to determine the most and least popular dishes.
+2. **Order Analysis**: Identify purchasing patterns, peak order times, and the distribution of orders across different menu categories.
+3. **Customer Behavior Analysis**: Analyse customer preferences, high-spending orders, and trends to inform business decisions.
 
 ### SQL Queries
 
