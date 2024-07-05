@@ -1,17 +1,5 @@
 # 🍽️ Restaurant Orders Analysis 
 
-## Table of Contents
-- [Project Overview](#project-overview)
-- [Dataset](#dataset)
-- [Methodology](#methodology)
-- [Tools Used](#tools-used)
-- [Objectives](#objectives)
-- [SQL Queries](#sql-queries)
-- [Summary of Key Findings](#summary-of-key-findings)
-- [Recommendations](#recommendations)
-- [Limitations](#limitations)
-- [Links](#links)
-
 ### 📁 Project Overview
 Welcome to the **Taste of the World Café** analysis project! This project involves a comprehensive SQL analysis of restaurant orders from January 1, 2023, to March 31, 2023, using a fictional dataset. The aim is to uncover insights into menu performance and customer preferences following the introduction of a new menu at the beginning of the year. 
 
@@ -34,11 +22,7 @@ Applied SQL aggregations, joins, subqueies, window function, CTE and filters to 
 	- Menu item popularity and profitability
 	- Order volumes and peak times
 	- Customer spending trends and category preferences.
-
-- **Assumptions**:
-	- Data integrity and consistency assumed for the provided dataset.
-	- Pricing strategies assumed to be consistent throughout the analysis period.
-
+   
 ### 🛠️ Tools Used
 
 - **MySQL**: The primary database management system used for querying and data analysis.
@@ -55,7 +39,7 @@ The primary objectives of this project are:
 3. **Customer Preference Insights**: Analyse customer preferences and spending trends to understand the reception of the new menu items.
 
 ### 💻 SQL Queries
-Here are the key SQL queries used for analysing the restaurant orders dataset:
+Here are some of the SQL queries used for analysing the restaurant orders dataset:
 
 **Query 1: Menu Performance Evaluation**
 ```sql
