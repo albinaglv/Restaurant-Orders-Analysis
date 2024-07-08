@@ -11,17 +11,28 @@ The data is available in CSV format and consists of two files:
 
 ### 🔍 Methodology
 
-- **Data Extraction**:
-Utilized SQL queries to extract data from menu_items and order_details.
+- **Data Setup**:
 
-- **Data Transformation**:
-Transformed raw data using SQL to derive insights on menu performance, order trends, and customer preferences.
+	**1. Create Database and Tables**:
 
-- **Data Analysis**:
-Applied SQL aggregations, joins, subqueies, window function, CTE and filters to analyse:
-	- Menu item popularity and profitability
-	- Order volumes and peak times
-	- Customer spending trends and category preferences.
+	- Database Schema: Set up a new database schema named `restaurant_orders_db` to house all data related to menu items and order details.
+
+	- Tables Creation: Create tables `menu_items` and `order_details` to store the dataset.
+
+	- **2. Import Data**:
+   
+ 	- Data Import Wizard: Import CSV files (menu_items.csv and order_details.csv) into these tables using the Table Data Import Wizard.
+
+ - **Data Extraction**:
+ 
+ -SQL Queries: Employ a variety of SQL techniques to extract relevant data from the database tables (`menu_items` and `order_details`):
+
+	- Joins: Utilised `INNER JOIN`s to combine data from `order_details` and `menu_item` tables based on `item_id` to facilitate comprehensive data analysis.
+	- Subqueries: Employ subqueries to derive specific insights, such as counting the number of items per order (total_items_ordered) and filtering orders based on specific criteria (e.g., orders with more than 12 items).
+	- Aggregations: Apply SQL aggregations like COUNT(), SUM(), and AVG() to compute metrics such as total sales revenue per menu category, average item prices, and order counts.
+	- Window Functions: Implement window functions where applicable to perform complex analyses, such as ranking or cumulative sums of sales revenue over time.
+	- Common Table Expressions (CTEs): Use CTEs to create temporary result sets, enhancing query readability and enabling the construction of more complex queries.
+	- Filters and Grouping: Employ WHERE clauses and GROUP BY statements to filter and group data based on specific criteria, such as order times or menu categories.
    
 ### 🛠️ Tools Used
 
@@ -210,22 +221,18 @@ The highest order volumes occur during the following hours:
 
 ### 🚧 Limitations
 
-**Limited Timeframe:**
+- **Limited Timeframe and Lack of Seasonal Insights:**
+  
+The analysis is limited to the three-month period from January to March 2023, which may not capture the full spectrum of customer behaviour and menu performance. It primarily reflects short-term trends that can be volatile and may not provide insights into long-term customer preferences or the sustained impact of the new menu. Additionally, seasonal variations in customer behaviour have not been considered, which could influence ordering patterns and preferences across different times of the year.
 
-The analysis is based on data spanning three months from January to March 2023. This timeframe allows for a detailed examination of menu performance and customer preferences shortly after the introduction of a new menu. However, it may not capture seasonal variations or long-term trends in customer behavior and menu popularity. The absence of historical data before the new menu's introduction makes it challenging to compare menu performance over time and assess the sustained impact of the changes.
+- **Absence of Historical Comparison**:
 
-**Lack of Real-World Variability:**
+The lack of data from before the new menu launch makes it difficult to compare the performance of the old and new menus. Without historical context, it is challenging to determine whether observed changes are due to the new menu or other external factors.
 
-The analysis relies on a fictional dataset sourced from [Maven Analytics: Data Playground](https://mavenanalytics.io/data-playground?page=4&pageSize=5), which may not fully reflect the complexities and nuances of real-world restaurant operations. Certain variables or factors influencing customer behavior, such as external economic conditions or local events, are not captured in the dataset, potentially limiting the depth of insights that can be derived.
-
-**Lack of Direct Feedback:**
+- **Lack of Detailed Customer Data**:
  
-The analysis does not incorporate direct customer feedback or satisfaction metrics, which are crucial for understanding the qualitative aspects of menu performance and customer experience.
-
-**Lack of Detailed Customer Data:**
-
- The dataset does not provide detailed customer demographics, such as age, gender, or income level, which could offer deeper insights into customer preferences and behavior.
+The dataset does not provide detailed customer demographics, such as age, gender, or income level, which could offer deeper insights into customer preferences and behaviour.
 
 ### 🔗 Links
 - [Dataset](https://mavenanalytics.io/data-playground?page=4&pageSize=5)
-- [SQL Scripts](https://github.com/albinaglv/Restaurant-Orders-Analysis/tree/main/SQL)
+
