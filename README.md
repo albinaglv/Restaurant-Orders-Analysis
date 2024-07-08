@@ -228,4 +228,4 @@ The analysis does not incorporate direct customer feedback or satisfaction metri
 
 ### 🔗 Links
 - [Dataset](https://mavenanalytics.io/data-playground?page=4&pageSize=5)
-- [SQL Scripts]()
+- [SQL Scripts](https://github.com/albinaglv/Restaurant-Orders-Analysis/tree/main/SQL)
