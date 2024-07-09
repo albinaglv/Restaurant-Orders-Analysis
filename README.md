@@ -1,4 +1,4 @@
-# 🍽️ Restaurant Orders Analysis 
+# Restaurant Orders Analysis 
 
 ### 📁 Project Overview
 Welcome to the **Taste of the World Café** analysis project! This project involves a comprehensive SQL analysis of restaurant orders from January 1, 2023, to March 31, 2023, using a fictional dataset. The aim is to uncover insights into menu performance and customer preferences following the introduction of a new menu at the beginning of the year. 
