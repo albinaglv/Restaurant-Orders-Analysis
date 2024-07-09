@@ -8,31 +8,6 @@ The dataset used in this project is sourced from [Maven Analytics: Data Playgrou
 The data is available in CSV format and consists of two files: 
 - **menu_items.csv**: This file contains the following columns: `menu_item_id`, `item_name`, `category`, `price`.
 - **order_details.csv**: This file includes columns such as `order_details_id`, `order_id`, `order_date`, `order_time`, `item_id`.
-
-### 🔍 Methodology
-
-- **Data Setup**:
-
-	**1. Create Database and Tables**:
-
-	- Database Schema: Set up a new database schema named `restaurant_orders_db` to house all data related to menu items and order details.
-
-	- Tables Creation: Create tables `menu_items` and `order_details` to store the dataset.
-
-	- **2. Import Data**:
-   
- 	- Data Import Wizard: Import CSV files (menu_items.csv and order_details.csv) into these tables using the Table Data Import Wizard.
-
- - **Data Extraction**:
- 
- -SQL Queries: Employ a variety of SQL techniques to extract relevant data from the database tables (`menu_items` and `order_details`):
-
-	- Joins: Utilised `INNER JOIN`s to combine data from `order_details` and `menu_item` tables based on `item_id` to facilitate comprehensive data analysis.
-	- Subqueries: Employ subqueries to derive specific insights, such as counting the number of items per order (total_items_ordered) and filtering orders based on specific criteria (e.g., orders with more than 12 items).
-	- Aggregations: Apply SQL aggregations like COUNT(), SUM(), and AVG() to compute metrics such as total sales revenue per menu category, average item prices, and order counts.
-	- Window Functions: Implement window functions where applicable to perform complex analyses, such as ranking or cumulative sums of sales revenue over time.
-	- Common Table Expressions (CTEs): Use CTEs to create temporary result sets, enhancing query readability and enabling the construction of more complex queries.
-	- Filters and Grouping: Employ WHERE clauses and GROUP BY statements to filter and group data based on specific criteria, such as order times or menu categories.
    
 ### 🛠️ Tools Used
 
@@ -40,7 +15,7 @@ The data is available in CSV format and consists of two files:
 
 ### 🎯 Objectives
 
-In a competitive restaurant industry, understanding customer preferences and menu performance is crucial for maintaining profitability and customer satisfaction. This project aims to provide actionable insights that can help restaurant owners optimize their menu offerings, improve operational efficiency, and ultimately enhance customer experiences.
+In a competitive restaurant industry, understanding customer preferences and menu performance is crucial for maintaining profitability and customer satisfaction. This project aims to provide actionable insights that can help restaurant owners optimise their menu offerings, improve operational efficiency, and ultimately enhance customer experiences.
 
 The primary objectives of this project are:
 1. **Menu Performance Evaluation**: Assess the popularity and profitability of new menu items.
