@@ -1,5 +1,5 @@
 -- OBJECTIVE 3: Cutomer Behaviour Analysis
--- This objective focuses on analyzing customer behavior by examining order patterns, item preferences, and spending habits.
+-- This objective focuses on analysing customer behavior by examining order patterns, item preferences, and spending habits.
 
 -- JOIN two tables: order_details and menu_items.
  -- This query performs a LEFT JOIN to combine data from order_details and menu_items.
